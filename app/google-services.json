@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "300634996584",
+    "firebase_url": "https://andweatherapp.firebaseio.com",
+    "project_id": "andweatherapp",
+    "storage_bucket": "andweatherapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300634996584:android:311eeb159bdcaa152a20dd",
+        "android_client_info": {
+          "package_name": "com.example.andweatherapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300634996584-1efeaciknf6klumsggjslv1kvbgnqdb0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.andweatherapp",
+            "certificate_hash": "3c040019fff2127cdbcc4a0c1c0b4806b6250440"
+          }
+        },
+        {
+          "client_id": "300634996584-53r39m3b1nm5f5u5a84fagdgjdfh7r5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv213P16DBa4SkL9MStk7DJhvZ3vZ2Jgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300634996584-53r39m3b1nm5f5u5a84fagdgjdfh7r5d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
