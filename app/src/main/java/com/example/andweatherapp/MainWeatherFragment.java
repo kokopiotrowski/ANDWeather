@@ -53,6 +53,7 @@ public class MainWeatherFragment extends Fragment {
         View v = inflater.inflate(R.layout.main_weather_fragment, container, false);
         mViewModel = new ViewModelProvider(this).get(MainWeatherViewModel.class);
 
+
         cityEditTextField = v.findViewById(R.id.enterCity);
         checkWeatherButton = v.findViewById(R.id.buttonWeather);
 
@@ -74,8 +75,6 @@ public class MainWeatherFragment extends Fragment {
                 searchHistorySet.add(historyInfo);
             }
         }
-
-
 
         setObserversAndListeners();
         generateComments();
@@ -116,9 +115,9 @@ public class MainWeatherFragment extends Fragment {
 
                 weatherImageView.setImageResource(IconHelper.getIconByCode(weatherInfo.getListOfWeather().get(0).getIcon()));
 
-                searchHistorySet.add(weatherInfo.getListOfWeather().get(0).getIcon() + "\\|"
-                        + weatherInfo.getName() + " - "
-                        + weatherInfo.getMainConditions().getTemp() + "*C ");
+                searchHistorySet.add(weatherInfo.getListOfWeather().get(0).getIcon() + "|"
+                        + weatherInfo.getName() + " "
+                        + weatherInfo.getMainConditions().getTemp() + "*C");
                 saveSearchHistory();
             }
         });

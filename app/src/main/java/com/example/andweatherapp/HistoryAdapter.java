@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.andweatherapp.Helpers.IconHelper;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -31,7 +33,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.historyInfo.setText(historyInfo.get(position));
+        String[] history = historyInfo.get(position).split("\\|", 0);
+        if(history.length==1)
+        {
+            holder.historyInfo.setText(history[0]);
+        }
+        else
+        {
+            String iconCode = history[0];
+            String info = history[1];
+            holder.icon.setImageResource(IconHelper.getIconByCode(iconCode));
+            holder.historyInfo.setText(info);
+        }
+
     }
 
     @Override
@@ -46,6 +60,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             historyInfo = itemView.findViewById(R.id.historyCity);
+            icon = itemView.findViewById(R.id.historyIcon);
         }
     }
 }

@@ -19,10 +19,17 @@
     <string name="action_settings">Settings</string>
 
     <string name="about">
-        This version (v1.0) allows you to check the current weather all over the world.
-        You can see history of your searches,
-        Further development will be done.
-        Author: Konrad Piotrowski
+        Weather F***cast v1.0\n
+        Current version allows you to check the current weather all over the world.\n
+        You can login with your account, see history of your past searches.\n
+        If you want a doze of positive approach to weather, search for a city with "comment" enabled :).\n
+        Further development will be done. Planned features:\n
+        - more detailed information about weather -\n
+        - adding list of favourite cities -\n
+        - settings (DARK MODE!) -\n
+        - extra stylings and much more -\n
+        Stay updated!\n
+        Author: Konrad Piotrowski\n
     </string>
 
     <string-array name="before_comment">
@@ -33,7 +40,7 @@
         <item>Goddam </item>
         <item>Balls </item>
         <item>Yo yo, it\'s</item>
-        <item></item>
+        <item>Crazy ya</item>
     </string-array>
 
     <string-array name="after_comment">
@@ -46,6 +53,8 @@
         <item>you motherfucker</item>
         <item>daaamn son</item>
         <item>lol</item>
+        <item>, so go outside</item>
+        <item></item>
     </string-array>
 
     <string name="menu_home">Home</string>
