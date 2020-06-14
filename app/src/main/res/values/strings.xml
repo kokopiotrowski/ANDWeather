@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Weather F***cast</string>
     <string name="title_activity_firebase_login">Sign in</string>
@@ -9,4 +10,45 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_weather">WeatherActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="before_comment">
+        <item>Fucking</item>
+        <item>Hell yeah, it\'s</item>
+        <item>Get ready for</item>
+        <item>WTF - </item>
+        <item>Goddam </item>
+        <item>Balls </item>
+        <item>Yo yo, it\'s</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="after_comment">
+        <item>for fuck sake</item>
+        <item>shiiiit</item>
+        <item>kurwa!</item>
+        <item>, you fucking kidding me</item>
+        <item>ass</item>
+        <item>say whaaaat\?</item>
+        <item>you motherfucker</item>
+        <item>daaamn son</item>
+        <item>lol</item>
+    </string-array>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string name="home_second">Home Second</string>
+
+
 </resources>

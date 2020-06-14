@@ -45,4 +45,56 @@ public class FullWeatherInfo {
         this.name = name;
         this.cod = cod;
     }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public List<Weather> getListOfWeather() {
+        return listOfWeather;
+    }
+
+    public String getBase() {
+        return base;
+    }
+
+    public MainConditions getMainConditions() {
+        return mainConditions;
+    }
+
+    public double getVisibility() {
+        return visibility;
+    }
+
+    public Wind getWind() {
+        return wind;
+    }
+
+    public Clouds getClouds() {
+        return clouds;
+    }
+
+    public double getDt() {
+        return dt;
+    }
+
+    public Sys getSys() {
+        return sys;
+    }
+
+    public double getTimezone() {
+        return timezone;
+    }
+
+    public double getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCod() {
+        return cod;
+    }
 }

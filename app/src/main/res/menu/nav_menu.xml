@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/weatherItem"
+        android:title="Weather"/>
+
+    <item android:id="@+id/historyItem"
+        android:title="History"/>
+
+    <item android:id="@+id/aboutItem"
+        android:title="About"/>
+
+
+    <item android:id="@+id/logoutItem"
+        android:title="Logout"/>
+
+
+
+</menu>

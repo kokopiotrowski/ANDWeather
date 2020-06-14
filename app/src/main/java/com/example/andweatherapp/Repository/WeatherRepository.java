@@ -36,7 +36,8 @@ public class WeatherRepository {
 
     public void updateWeatherInfo(String city)
     {
-        final WeatherApi weatherApi = ServiceGenerator.getWeatherApi();
+        Log.i("retrofit", "hello");
+        WeatherApi weatherApi = ServiceGenerator.getWeatherApi();
         Call<WeatherResponse> call = weatherApi.getWeather(city, APP_KEY);
         call.enqueue(new Callback<WeatherResponse>() {
             @Override
@@ -46,11 +47,12 @@ public class WeatherRepository {
                     weatherInfo.setValue(response.body().getWeather());
                     Log.i("Weather", "Weather retrieved properly: " + weatherInfo.getValue().toString());
                 }
+                Log.i("fuck", "fuck");
             }
 
             @Override
             public void onFailure(Call<WeatherResponse> call, Throwable t) {
-                Log.i("Weather", "Weather is not here?");
+                Log.i("Weather", t.getMessage());
             }
         });
     }

@@ -17,9 +17,7 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static android.app.Activity.RESULT_OK;
-
-public class FirebaseLoginFragment extends AppCompatActivity {
+public class FirebaseLoginActivity extends AppCompatActivity {
     public static final int RC_SIGN_IN = 10;
 
     private FirebaseAuth mAuth;
@@ -37,16 +35,16 @@ public class FirebaseLoginFragment extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-        //if (user != null) {
-            //startActivity(new Intent(this, MainActivity.class));
-        //} else {
+        if (user != null) {
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
             startActivityForResult(
                     AuthUI.getInstance().
                             createSignInIntentBuilder()
                             .setAvailableProviders(providers)
                             .setIsSmartLockEnabled(false)
                             .build(), RC_SIGN_IN);
-        //}
+        }
     }
 
 
@@ -56,7 +54,7 @@ public class FirebaseLoginFragment extends AppCompatActivity {
 
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
-                Toast.makeText(FirebaseLoginFragment.this, "You are now signed in",
+                Toast.makeText(FirebaseLoginActivity.this, "You are now signed in",
                         Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this, MainActivity.class));
             } else {
