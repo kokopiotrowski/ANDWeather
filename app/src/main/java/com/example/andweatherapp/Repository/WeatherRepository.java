@@ -36,7 +36,6 @@ public class WeatherRepository {
 
     public void updateWeatherInfo(String city)
     {
-        Log.i("retrofit", "hello");
         WeatherApi weatherApi = ServiceGenerator.getWeatherApi();
         Call<WeatherResponse> call = weatherApi.getWeather(city, APP_KEY);
         call.enqueue(new Callback<WeatherResponse>() {
@@ -47,7 +46,6 @@ public class WeatherRepository {
                     weatherInfo.setValue(response.body().getWeather());
                     Log.i("Weather", "Weather retrieved properly: " + weatherInfo.getValue().toString());
                 }
-                Log.i("fuck", "fuck");
             }
 
             @Override
