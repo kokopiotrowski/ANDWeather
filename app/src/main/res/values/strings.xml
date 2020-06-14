@@ -18,6 +18,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="about">
+        The current version (v1.0) allows you to check the current weather all over the world.
+    </string>
+
     <string-array name="before_comment">
         <item>Fucking</item>
         <item>Hell yeah, it\'s</item>
