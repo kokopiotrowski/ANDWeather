@@ -20,10 +20,8 @@ public class AboutFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.about_fragment, container, false);
 
-
         aboutTextView = v.findViewById(R.id.aboutTextView);
         aboutTextView.setText(R.string.about);
-
         return v;
     }
 }

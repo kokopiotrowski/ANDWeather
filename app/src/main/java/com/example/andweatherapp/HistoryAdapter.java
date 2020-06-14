@@ -30,7 +30,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String[] history = historyInfo.get(position).split("\\|", 0);
@@ -45,9 +44,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             holder.icon.setImageResource(IconHelper.getIconByCode(iconCode));
             holder.historyInfo.setText(info);
         }
-
     }
-
     @Override
     public int getItemCount() {
         return historyInfo.size();

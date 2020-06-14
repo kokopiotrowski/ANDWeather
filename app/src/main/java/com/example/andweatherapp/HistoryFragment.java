@@ -48,7 +48,6 @@ public class HistoryFragment extends Fragment {
                 updateSearchHistory();
             }
         });
-
         return v;
     }
 
@@ -65,6 +64,5 @@ public class HistoryFragment extends Fragment {
         }
         HistoryAdapter adapter = new HistoryAdapter(searchHistoryInfo);
         historyRecyclerView.setAdapter(adapter);
-
     }
 }
