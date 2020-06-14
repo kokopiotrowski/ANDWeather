@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainWeather()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainWeatherFragment()).commit();
             navigationView.setCheckedItem(R.id.weatherItem);
         }
 
@@ -55,6 +55,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch(item.getItemId())
         {
+
+            case R.id.weatherItem:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainWeatherFragment()).commit();
+                break;
+            case R.id.aboutItem:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
+                break;
+            case R.id.historyItem:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoryFragment()).commit();
+                break;
             case R.id.logoutItem:
                 AuthUI.getInstance().signOut(this).addOnCompleteListener(
                         task -> {

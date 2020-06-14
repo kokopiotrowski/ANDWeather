@@ -2,6 +2,8 @@ package com.example.andweatherapp;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,9 +20,13 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.andweatherapp.Helpers.IconHelper;
 import com.example.andweatherapp.ViewModels.MainWeatherViewModel;
 
-public class MainWeather extends Fragment {
+import java.util.HashSet;
+import java.util.Set;
+
+public class MainWeatherFragment extends Fragment {
 
     private MainWeatherViewModel mViewModel;
     private Button checkWeatherButton;
@@ -35,11 +41,10 @@ public class MainWeather extends Fragment {
     private String[] commentsBefore;
     private String[] commentsAfter;
 
-    private Switch funnySwitch;
+    private SharedPreferences pref;
+    private Set<String> searchHistorySet;
 
-    public static MainWeather newInstance() {
-        return new MainWeather();
-    }
+    private Switch funnySwitch;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -58,6 +63,20 @@ public class MainWeather extends Fragment {
         weatherImageView = v.findViewById(R.id.weatherImageView);
 
         funnySwitch = v.findViewById(R.id.switchFunny);
+
+        pref = getActivity().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        searchHistorySet = new HashSet<>();
+
+        if(pref.getStringSet("searchHistory", null)!= null )
+        {
+            Set<String> set = pref.getStringSet("searchHistory", null);
+            for(String historyInfo : set) {
+                searchHistorySet.add(historyInfo);
+            }
+        }
+
+
+
         setObserversAndListeners();
         generateComments();
 
@@ -78,11 +97,10 @@ public class MainWeather extends Fragment {
             Log.i("object", weatherInfo.getMainConditions().toString());
             if(weatherInfo!=null)
             {
-                cityTextView.setText(weatherInfo.getName());
                 weatherInfo.getMainConditions().setTemperatureToCelsius();
-                titleTextView.setText(String.valueOf(weatherInfo.getMainConditions().getTemp()) + " *C");
 
-
+                cityTextView.setText(weatherInfo.getName());
+                titleTextView.setText(String.valueOf(weatherInfo.getMainConditions().getTemp()) + "*C");
                 if(funnySwitch.isChecked()) {
                     if(Math.random()>0.5){
                         descriptionTextView.setText(getRandomBeforeComment() + " " +weatherInfo.getListOfWeather().get(0).getMain());
@@ -96,62 +114,12 @@ public class MainWeather extends Fragment {
                     descriptionTextView.setText(weatherInfo.getListOfWeather().get(0).getMain());
                 }
 
-                switch(weatherInfo.getListOfWeather().get(0).getIcon()) {
-                    case "01d":
-                    weatherImageView.setImageResource(R.drawable.icon01d);
-                    break;
-                    case "02d":
-                        weatherImageView.setImageResource(R.drawable.icon02d);
-                        break;
-                    case "03d":
-                        weatherImageView.setImageResource(R.drawable.icon03d);
-                        break;
-                    case "04d":
-                        weatherImageView.setImageResource(R.drawable.icon04d);
-                        break;
-                    case "09d":
-                        weatherImageView.setImageResource(R.drawable.icon09d);
-                        break;
-                    case "10d":
-                        weatherImageView.setImageResource(R.drawable.icon10d);
-                        break;
-                    case "11d":
-                        weatherImageView.setImageResource(R.drawable.icon11d);
-                        break;
-                    case "13d":
-                        weatherImageView.setImageResource(R.drawable.icon13d);
-                        break;
-                    case "50d":
-                        weatherImageView.setImageResource(R.drawable.icon50d);
-                        break;
-                    case "01n":
-                        weatherImageView.setImageResource(R.drawable.icon01n);
-                        break;
-                    case "02n":
-                        weatherImageView.setImageResource(R.drawable.icon02n);
-                        break;
-                    case "03n":
-                        weatherImageView.setImageResource(R.drawable.icon03n);
-                        break;
-                    case "04n":
-                        weatherImageView.setImageResource(R.drawable.icon04n);
-                        break;
-                    case "09n":
-                        weatherImageView.setImageResource(R.drawable.icon09n);
-                        break;
-                    case "10n":
-                        weatherImageView.setImageResource(R.drawable.icon10n);
-                        break;
-                    case "11n":
-                        weatherImageView.setImageResource(R.drawable.icon11n);
-                        break;
-                    case "13n":
-                        weatherImageView.setImageResource(R.drawable.icon13n);
-                        break;
-                    case "50n":
-                        weatherImageView.setImageResource(R.drawable.icon50n);
-                        break;
-                }
+                weatherImageView.setImageResource(IconHelper.getIconByCode(weatherInfo.getListOfWeather().get(0).getIcon()));
+
+                searchHistorySet.add(weatherInfo.getListOfWeather().get(0).getIcon() + "\\|"
+                        + weatherInfo.getName() + " - "
+                        + weatherInfo.getMainConditions().getTemp() + "*C ");
+                saveSearchHistory();
             }
         });
 
@@ -171,6 +139,12 @@ public class MainWeather extends Fragment {
     private String getRandomAfterComment(){
         int id = (int) Math.floor(Math.random() * commentsAfter.length);
         return commentsAfter[id];
+    }
+
+    private void saveSearchHistory(){
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putStringSet("searchHistory", searchHistorySet);
+        editor.apply();
     }
 
 
