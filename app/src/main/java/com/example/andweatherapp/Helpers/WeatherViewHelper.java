@@ -2,7 +2,42 @@ package com.example.andweatherapp.Helpers;
 
 import com.example.andweatherapp.R;
 
-public class IconHelper {
+public class WeatherViewHelper {
+    public static String getArrowForWindDeg(double deg){
+        if(deg<22.5){
+            return "⇑"; //up N
+        }
+        else if(deg<67.5)
+        {
+            return "⇗"; // up-right NE
+        }
+        else if(deg<112.5){
+            return "⇒"; // right E
+        }
+        else if(deg<157.5){
+            return "⇘"; // down-right SE
+        }
+        else if(deg<202.5){
+            return "⇓"; // down S
+        }
+        else if(deg<247.5){
+            return "⇙"; // down-left SW
+        }
+        else if(deg<292.5){
+            return "⇐"; // left W
+        }
+        else if(deg<337.5){
+            return "⇖"; // up-left NW
+        }
+        else if(deg<=360){
+            return "⇑"; //up N
+        }
+    return "-";
+
+    }
+
+
+
     public static int getIconByCode(String code)
     {
         switch(code) {

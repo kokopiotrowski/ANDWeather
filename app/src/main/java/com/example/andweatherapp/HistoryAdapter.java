@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.andweatherapp.Helpers.IconHelper;
+import com.example.andweatherapp.Helpers.WeatherViewHelper;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         {
             String iconCode = history[0];
             String info = history[1];
-            holder.icon.setImageResource(IconHelper.getIconByCode(iconCode));
+            holder.icon.setImageResource(WeatherViewHelper.getIconByCode(iconCode));
             holder.historyInfo.setText(info);
         }
     }

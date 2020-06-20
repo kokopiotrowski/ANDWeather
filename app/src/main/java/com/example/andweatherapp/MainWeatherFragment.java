@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.andweatherapp.Helpers.IconHelper;
+import com.example.andweatherapp.Helpers.WeatherViewHelper;
 import com.example.andweatherapp.ViewModels.MainWeatherViewModel;
 
 import java.util.HashSet;
@@ -35,6 +35,12 @@ public class MainWeatherFragment extends Fragment {
     private TextView cityTextView;
     private TextView titleTextView;
     private TextView descriptionTextView;
+
+    private TextView humidityDataView;
+    private TextView windDirectionView;
+    private TextView windSpeedView;
+    private TextView pressureDataView;
+    private TextView cloudsPercentView;
 
     private ImageView weatherImageView;
 
@@ -60,6 +66,12 @@ public class MainWeatherFragment extends Fragment {
         cityTextView = v.findViewById(R.id.cityTextView);
         titleTextView = v.findViewById(R.id.weatherTitle);
         descriptionTextView = v.findViewById(R.id.weatherDescriptionTextView);
+
+        humidityDataView = v.findViewById(R.id.humidityDataView);
+        windSpeedView = v.findViewById(R.id.windSpeedView);
+        windDirectionView = v.findViewById(R.id.windDirectionView);
+        pressureDataView = v.findViewById(R.id.pressureDataView);
+        cloudsPercentView = v.findViewById(R.id.cloudsPercentView);
 
         weatherImageView = v.findViewById(R.id.weatherImageView);
 
@@ -99,7 +111,7 @@ public class MainWeatherFragment extends Fragment {
                 weatherInfo.getMainConditions().setTemperatureToCelsius();
 
                 cityTextView.setText(weatherInfo.getName());
-                titleTextView.setText(String.valueOf(weatherInfo.getMainConditions().getTemp()) + "*C");
+                titleTextView.setText(String.valueOf(weatherInfo.getMainConditions().getTemp()) + "°C");
                 if(funnySwitch.isChecked()) {
                     if(Math.random()>0.5){
                         descriptionTextView.setText(getRandomBeforeComment() + " " +weatherInfo.getListOfWeather().get(0).getMain());
@@ -113,12 +125,21 @@ public class MainWeatherFragment extends Fragment {
                     descriptionTextView.setText(weatherInfo.getListOfWeather().get(0).getMain());
                 }
 
-                weatherImageView.setImageResource(IconHelper.getIconByCode(weatherInfo.getListOfWeather().get(0).getIcon()));
+                weatherImageView.setImageResource(WeatherViewHelper.getIconByCode(weatherInfo.getListOfWeather().get(0).getIcon()));
 
                 searchHistorySet.add(weatherInfo.getListOfWeather().get(0).getIcon() + "|"
                         + weatherInfo.getName() + " "
-                        + weatherInfo.getMainConditions().getTemp() + "*C");
+                        + weatherInfo.getMainConditions().getTemp() + "°C");
+
+
+                humidityDataView.setText(Double.toString(weatherInfo.getMainConditions().getHumidity()) + "%");
+                pressureDataView.setText(Double.toString(weatherInfo.getMainConditions().getPressure()) + " hPa");
+                windSpeedView.setText(Double.toString(weatherInfo.getWind().getSpeed()) + "m/s");
+                windDirectionView.setText(WeatherViewHelper.getArrowForWindDeg(weatherInfo.getWind().getDeg()));
+                cloudsPercentView.setText(Double.toString(weatherInfo.getClouds().getAll()) + "%");
+
                 saveSearchHistory();
+
             }
         });
 
